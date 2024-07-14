@@ -67,7 +67,7 @@
             <li><a href="#team">ABOUT US</a></li>
             <li><a href="#user"><i class="bi bi-person text-black fs-5"></i></a></li>
             <li><a href="#notifications"><i class="bi bi-bell text-black fs-5"></i></a></li>
-            <li><a href="cart.html"><i class="bi bi-bag text-black fs-5"></i></a></li>
+            <li><a href="#bag"><i class="bi bi-bag text-black fs-5"></i></a></li>
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -80,48 +80,29 @@
 
   <main class="main">
 
-    
-    <div class="sign-section">
-      <div id="signin" class="tab-content">
-          <h2>Sign In</h2>
-          <form action="/signin.php" method="POST">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" required>
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" required>
-              <button type="submit">Sign In</button>
-          </form>
-          <div class="forgot-password">
-              <a href="/forgot-password">Forgot Password?</a>
-          </div>
-          <div class="create-account-link">
-              <a href="#" id="createAccountLink">Create an Account</a>
-          </div>
-      </div>
-  </div>
-  
-  <!-- Overlay for Create Account -->
-  <div id="createAccountOverlay" class="overlay">
-      <div class="overlay-content">
-          <span class="close-btn" onclick="closeCreateAccountOverlay()">&times;</span>
-          <div id="signup" class="tab-content">
-              <h2>Create an Account</h2>
-              <form action="/signup.php" method="POST">
-                  <label for="username">Username:</label>
-                  <input type="text" id="username" name="username" required>
-                  <label for="signup-email">Email:</label>
-                  <input type="email" id="signup-email" name="email" required>
-                  <label for="signup-password">Password:</label>
-                  <input type="password" id="signup-password" name="password" required>
-                  <button type="submit">Sign Up</button>
-              </form>
+    <section class="cart-section">
+      <h1>Shopping Cart</h1>
+      <div id="cart-container">
+          <table id="cart-table">
+              <thead>
+                  <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- Cart items will be dynamically inserted here -->
+              </tbody>
+          </table>
+          <div id="cart-total">
+              <h2>Total: $<span id="total-amount">0.00</span></h2>
           </div>
       </div>
-  </div>
-  
-  
-  
-
+      <button id="checkout-button">Proceed to Checkout</button>
+  </section>
   </main>
 
  

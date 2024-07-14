@@ -260,3 +260,62 @@ $(document).ready(function() {
       $('#' + tabId).show(); // Show the selected tab-content
   });
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartTableBody = document.querySelector('#cart-table tbody');
+  const totalAmount = document.getElementById('total-amount');
+
+  function renderCart() {
+      cartTableBody.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+          const row = document.createElement('tr');
+          
+          const productCell = document.createElement('td');
+          productCell.textContent = item.name;
+          row.appendChild(productCell);
+
+          const priceCell = document.createElement('td');
+          priceCell.textContent = `$${item.price.toFixed(2)}`;
+          row.appendChild(priceCell);
+
+          const quantityCell = document.createElement('td');
+          quantityCell.textContent = item.quantity;
+          row.appendChild(quantityCell);
+
+          const totalCell = document.createElement('td');
+          const itemTotal = item.price * item.quantity;
+          totalCell.textContent = `$${itemTotal.toFixed(2)}`;
+          row.appendChild(totalCell);
+
+          total += itemTotal;
+
+          const actionsCell = document.createElement('td');
+          const removeButton = document.createElement('button');
+          removeButton.textContent = 'Remove';
+          removeButton.addEventListener('click', () => {
+              removeItemFromCart(index);
+          });
+          actionsCell.appendChild(removeButton);
+          row.appendChild(actionsCell);
+
+          cartTableBody.appendChild(row);
+      });
+
+      totalAmount.textContent = total.toFixed(2);
+  }
+
+  function removeItemFromCart(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+  }
+
+  renderCart();
+
+  document.getElementById('checkout-button').addEventListener('click', () => {
+      // Implement checkout functionality here
+      alert('Proceeding to checkout');
+  });
+});
