@@ -249,3 +249,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+// Example using jQuery
+$(document).ready(function() {
+  $('.tab-content').hide(); // Hide all tab-content initially
+  $('#signin').show(); // Show the signin form by default
+
+  $('.tab-switch').on('click', function() {
+      $('.tab-content').hide(); // Hide all tab-content
+      var tabId = $(this).data('tab'); // Get data-tab attribute
+      $('#' + tabId).show(); // Show the selected tab-content
+  });
+});
